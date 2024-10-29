@@ -48,7 +48,7 @@ const initSwiper = () => {
 // Função para carregar filmes e agrupar por ano
 async function loadMovies() {
 	try {
-		const response = await fetch("http://localhost:3001/api/movies");
+		const response = await fetch("https://api-movies-06ts.onrender.com/api/movies");
 		const data = await response.json();
 
 		// Agrupa os filmes por ano sem usar o método reduce
@@ -89,7 +89,7 @@ async function loadMovies() {
 				cardContainer.classList.add("card-container");
 
 				const img = document.createElement("img");
-				img.src = `http://localhost:3001${movie.image_url}`;
+				img.src = `https://api-movies-06ts.onrender.com${movie.image_url}`;
 				img.alt = movie.title;
 				cardContainer.appendChild(img);
 
