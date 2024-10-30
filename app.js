@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   	video.addEventListener("error", function (e) {
     	console.log("Video error:", e);
-    document.querySelector(".background-video-container").style.display = "none";
+    	document.querySelector(".background-video-container").style.display = "none";
   	});
 
   	// Chama a função para buscar e exibir os filmes ao carregar a página
@@ -109,7 +109,16 @@ async function loadMovies() {
         button.addEventListener("click", () => {
 			videoDialog.style.display = "flex"; // Mostra o modal
 			videoDialog.showModal();
-			introVideo.play();
+			let playVideo = introVideo.play();
+			if (playVideo !== undefined) {
+				playVideo.then(_ => {
+				  // Automatic playback started!
+				  // Show playing UI.
+				})
+				.catch(error => {
+					console.log("Error : " + error);
+				});
+			  }
 		  });
   
 		  const closeButton = videoDialog.querySelector(".close-dialog");
