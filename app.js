@@ -45,6 +45,7 @@ const initSwiper = () => {
 };
 
 function playVideo() {
+	introVideo.muted = true;
 	introVideo.addEventListener("canplaythrough", () => {
 		// O vídeo está pronto para ser reproduzido
 		introVideo.play();
