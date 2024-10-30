@@ -45,7 +45,10 @@ const initSwiper = () => {
 };
 
 function playVideo() {
-	introVideo.play();
+	introVideo.addEventListener("canplaythrough", () => {
+		// O vídeo está pronto para ser reproduzido
+		introVideo.play();
+	});
 }
 
 function pauseVideo() {
@@ -118,7 +121,7 @@ async function loadMovies() {
         button.addEventListener("click", () => {
 			videoDialog.style.display = "flex"; // Mostra o modal
 			videoDialog.showModal();
-			introVideo.muted = true;
+			
 			playVideo();
 		  });
   
@@ -126,7 +129,7 @@ async function loadMovies() {
 		  closeButton.addEventListener("click", () => {
 			videoDialog.close();
 			videoDialog.style.display = "none"; // Oculta o modal
-			introVideo.muted = true;
+			
 			pauseVideo();
 
 		  });
