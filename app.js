@@ -109,24 +109,42 @@ async function loadMovies() {
         button.addEventListener("click", () => {
 			videoDialog.style.display = "flex"; // Mostra o modal
 			videoDialog.showModal();
+			introVideo.muted = true;
 			let playVideo = introVideo.play();
 			if (playVideo !== undefined) {
-				playVideo.then(_ => {
-				  // Automatic playback started!
-				  // Show playing UI.
-				})
-				.catch(error => {
-					console.log("Error : " + error);
-				});
-			  }
+				playVideo
+					.then(() => {
+						// Reprodução automática foi bem-sucedida
+						console.log("Video started successfully.");
+						// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
+					})
+					.catch(error => {
+						console.log("Error : " + error);
+						// Exibe um aviso ou sugere ao usuário clicar no botão de play
+					});
+			}
 		  });
   
 		  const closeButton = videoDialog.querySelector(".close-dialog");
 		  closeButton.addEventListener("click", () => {
 			videoDialog.close();
 			videoDialog.style.display = "none"; // Oculta o modal
-			introVideo.pause();
-			introVideo.currentTime = 0;
+			introVideo.muted = true;
+			let pauseVideo = introVideo.pause();
+			if (pauseVideo !== undefined) {
+				pauseVideo
+					.then(() => {
+						// Reprodução automática foi bem-sucedida
+						console.log("Video started successfully.");
+						introVideo.currentTime = 0;
+						// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
+					})
+					.catch(error => {
+						console.log("Error : " + error);
+						// Exibe um aviso ou sugere ao usuário clicar no botão de play
+					});
+			}
+
 		  });
 
         cardContainer.appendChild(button);
