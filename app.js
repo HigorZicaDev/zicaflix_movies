@@ -44,6 +44,15 @@ const initSwiper = () => {
   });
 };
 
+function playVideo() {
+	introVideo.play();
+}
+
+function pauseVideo() {
+	introVideo.pause();
+	introVideo.currentTime = 0;
+}
+
 // Função para carregar filmes e agrupar por ano
 async function loadMovies() {
   try {
@@ -110,32 +119,7 @@ async function loadMovies() {
 			videoDialog.style.display = "flex"; // Mostra o modal
 			videoDialog.showModal();
 			introVideo.muted = true;
-			introVideo.addEventListener("canplaythrough", () => {
-				// O vídeo está pronto para ser reproduzido
-				let playVideo = introVideo.play();
-				if (playVideo !== undefined) {
-					playVideo
-						.then(() => {
-							console.log("Video started automatically.");
-						})
-						.catch(error => {
-							console.log("Error: " + error);
-						});
-				}
-			});
-			// let playVideo = introVideo.play();
-			// if (playVideo !== undefined) {
-			// 	playVideo
-			// 		.then(() => {
-			// 			// Reprodução automática foi bem-sucedida
-			// 			console.log("Video started successfully.");
-			// 			// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
-			// 		})
-			// 		.catch(error => {
-			// 			console.log("Error : " + error);
-			// 			// Exibe um aviso ou sugere ao usuário clicar no botão de play
-			// 		});
-			// }
+			playVideo();
 		  });
   
 		  const closeButton = videoDialog.querySelector(".close-dialog");
@@ -143,20 +127,7 @@ async function loadMovies() {
 			videoDialog.close();
 			videoDialog.style.display = "none"; // Oculta o modal
 			introVideo.muted = true;
-			let pauseVideo = introVideo.pause();
-			if (pauseVideo !== undefined) {
-				pauseVideo
-					.then(() => {
-						// Reprodução automática foi bem-sucedida
-						console.log("Video started successfully.");
-						introVideo.currentTime = 0;
-						// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
-					})
-					.catch(error => {
-						console.log("Error : " + error);
-						// Exibe um aviso ou sugere ao usuário clicar no botão de play
-					});
-			}
+			pauseVideo();
 
 		  });
 
