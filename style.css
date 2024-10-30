@@ -87,6 +87,7 @@ body {
 	transition: color 0.3s;
 	cursor: pointer;
 	font-weight: 400;
+
 }
 
 .nav-item:hover {
@@ -328,10 +329,44 @@ dialog#video-dialog {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+}
 
-@media only screen and (max-width: 600px) {
+.nav-toggle {
+    display: none; /* Oculta o botão de menu por padrão */
+    font-size: 2rem; /* Tamanho do ícone de menu */
+    color: #e5e5e5;
+    cursor: pointer; /* Mudança de cursor ao passar o mouse */
+}
+
+@media only screen and (max-width: 700px) {
 	.content {
 		padding: 100px 10px 10px 10px;
 	}
-  }
+	.nav-menu {
+		display: none; /* Oculta o menu por padrão em telas pequenas */
+		flex-direction: column; /* Alinha os itens verticalmente */
+		position: absolute; /* Torna o menu flutuante */
+		top: 60px; /* Distância do topo */
+		right: 0; /* Alinhamento à direita */
+		background-color: rgba(0, 0, 0, 0.8); /* Fundo semi-transparente */
+		width: 100%; /* Largura total */
+	}
+
+	.nav-toggle {
+		display: block; /* Oculta o botão de menu por padrão */
+		font-size: 2rem; /* Tamanho do ícone de menu */
+		color: #e5e5e5;
+		cursor: pointer; /* Mudança de cursor ao passar o mouse */
+	}
+
+	.nav-item {
+		padding: 20px 10px 10px 10px;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+
+	.nav-item:hover {
+		background-color: #e5e5e58b;
+	}
+}

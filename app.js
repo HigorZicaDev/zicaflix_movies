@@ -161,3 +161,12 @@ async function loadMovies() {
 	loading.style.display = "none";
   }
 }
+
+document.getElementById('navToggle').addEventListener('click', function() {
+    const navMenu = document.getElementById('navMenu');
+    if (navMenu.style.display === 'flex') {
+        navMenu.style.display = 'none'; // Oculta o menu
+    } else {
+        navMenu.style.display = 'flex'; // Exibe o menu
+    }
+});
