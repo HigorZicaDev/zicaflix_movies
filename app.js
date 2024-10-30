@@ -110,19 +110,32 @@ async function loadMovies() {
 			videoDialog.style.display = "flex"; // Mostra o modal
 			videoDialog.showModal();
 			introVideo.muted = true;
-			let playVideo = introVideo.play();
-			if (playVideo !== undefined) {
-				playVideo
-					.then(() => {
-						// Reprodução automática foi bem-sucedida
-						console.log("Video started successfully.");
-						// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
-					})
-					.catch(error => {
-						console.log("Error : " + error);
-						// Exibe um aviso ou sugere ao usuário clicar no botão de play
-					});
-			}
+			introVideo.addEventListener("canplaythrough", () => {
+				// O vídeo está pronto para ser reproduzido
+				let playVideo = introVideo.play();
+				if (playVideo !== undefined) {
+					playVideo
+						.then(() => {
+							console.log("Video started automatically.");
+						})
+						.catch(error => {
+							console.log("Error: " + error);
+						});
+				}
+			});
+			// let playVideo = introVideo.play();
+			// if (playVideo !== undefined) {
+			// 	playVideo
+			// 		.then(() => {
+			// 			// Reprodução automática foi bem-sucedida
+			// 			console.log("Video started successfully.");
+			// 			// Aqui você pode adicionar a lógica para mostrar a interface de vídeo em reprodução
+			// 		})
+			// 		.catch(error => {
+			// 			console.log("Error : " + error);
+			// 			// Exibe um aviso ou sugere ao usuário clicar no botão de play
+			// 		});
+			// }
 		  });
   
 		  const closeButton = videoDialog.querySelector(".close-dialog");
