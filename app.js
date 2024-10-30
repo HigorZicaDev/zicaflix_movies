@@ -48,7 +48,14 @@ function playVideo() {
 	introVideo.muted = true;
 	introVideo.addEventListener("canplaythrough", () => {
 		// O vídeo está pronto para ser reproduzido
-		introVideo.play();
+		introVideo.play().catch(function (error) {
+			console.log("Video autoplay failed:", error);
+		});
+	
+		introVideo.addEventListener("error", function (e) {
+			console.log("Video error:", e);
+			document.querySelector(".background-video-container").style.display = "none";
+		});
 	});
 }
 
