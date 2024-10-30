@@ -29,11 +29,21 @@
         </div>
     </div>
     
+    <div id="loading" class="loading">Loading...</div>
     <div class="content" id="movie-container">
         
         <!-- DATA DYNAMIC JS -->
     
     </div>
+
+  <!-- Modal para o vídeo introdutório -->
+  <dialog id="video-dialog" class="video-dialog">
+    <video id="intro-video" controls>
+      <source src="assets/video/ViewingInstructions.mp4" type="video/mp4" />
+      Seu navegador não suporta o elemento de vídeo.
+    </video>
+    <button class="close-dialog">Fechar</button>
+  </dialog>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="app.js"></script>

@@ -286,6 +286,50 @@ body {
     background-color: #007623; /* Cor do botão ao passar o mouse */
 }
 
+/* Estilos para o modal de vídeo */
+dialog#video-dialog {
+	display: none; /* Modal oculto inicialmente */
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	height: 80%;
+	border: none;
+	background: rgba(0, 0, 0, 0.9);
+	padding: 0;
+	margin: auto;
+	overflow: hidden;
+	z-index: 1000; /* Garante que o modal fique acima dos elementos */
+  }
+  
+  .close-dialog {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	background: rgba(255, 255, 255, 0.2);
+	border: none;
+	color: white;
+	padding: 8px 16px;
+	cursor: pointer;
+	font-weight: 700;
+  }
+  
+  .close-dialog:hover {
+	background: rgba(255, 255, 255, 0.4);
+  }
+
+  .loading {
+	position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #555;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
 @media only screen and (max-width: 600px) {
 	.content {
 		padding: 100px 10px 10px 10px;
